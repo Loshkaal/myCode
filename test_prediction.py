@@ -11,7 +11,7 @@ model = tf.keras.models.load_model("D:/Source/myCode/models/product_recognition_
 class_labels = ['domik', 'ekomilk', 'ekoniva', 'krepysh', 'nyanya', 'spar'] 
 
 # Путь к тестовым изображениям
-image_folder = "D:/Source/myCode/train/"
+image_folder = "D:/Source/myCode/dataset/test"
 
 # Константы для сообщений
 PREPROCESS_MSG = "[ПРЕДОБРАБОТКА]"
