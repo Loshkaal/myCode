@@ -8,9 +8,9 @@ import os
 # Гиперпараметры
 IMG_SIZE = 128  # Увеличенный размер для лучшего качества
 BATCH_SIZE = 32
-EPOCHS = 30
+EPOCHS = 30 # Можете экспериментировать с количеством эпох
 
-# Создаем папку для моделей, если её нет
+# Создаем папку для моделей, если её нет (пути вствляйте свои (важно чтобы было "/"))
 if not os.path.exists("D:/Source/myCode/models"):
     os.makedirs("D:/Source/myCode/models")
 
@@ -28,7 +28,7 @@ train_datagen = ImageDataGenerator(
 
 # Загрузка тренировочных данных
 train_data = train_datagen.flow_from_directory(
-    "D:/Source/myCode/dataset",
+    "D:/Source/myCode/dataset/train",  # Свой путь до папки с датасетом
     target_size=(IMG_SIZE, IMG_SIZE),
     batch_size=BATCH_SIZE,
     class_mode='categorical',
@@ -38,7 +38,7 @@ train_data = train_datagen.flow_from_directory(
 # Загрузка валидационных данных (без аугментации)
 val_datagen = ImageDataGenerator(rescale=1./255, validation_split=0.2)
 val_data = val_datagen.flow_from_directory(
-    "D:/Source/myCode/dataset",
+    "D:/Source/myCode/dataset/val", # Аналогично с train_data
     target_size=(IMG_SIZE, IMG_SIZE),
     batch_size=BATCH_SIZE,
     class_mode='categorical',
