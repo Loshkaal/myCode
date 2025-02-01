@@ -17,7 +17,7 @@ image_folder = "D:/Source/myCode/train/"
 PREPROCESS_MSG = "[ПРЕДОБРАБОТКА]"
 CHECK_MSG = "[ПРОВЕРКА]"
 
-def resize_image(image_path, target_size=(128, 128)):  # Изменено на 128x128!
+def resize_image(image_path, target_size=(128, 128)):  # Изменено на 128x128
     """Изменение размера и конвертация в RGB"""
     image = cv2.imread(image_path)
     if image is None:
@@ -29,7 +29,7 @@ def resize_image(image_path, target_size=(128, 128)):  # Изменено на 1
     print(f"{PREPROCESS_MSG} Изображение {os.path.basename(image_path)} изменено до {target_size}.")
     return resized_image
 
-def check_image(image, expected_size=(128, 128)):  # Изменено на 128x128!
+def check_image(image, expected_size=(128, 128)): 
     """Проверка размера и формата"""
     if image is None:
         return False
@@ -45,11 +45,11 @@ def check_image(image, expected_size=(128, 128)):  # Изменено на 128x1
 def predict_image(image):
     """Предсказание для одного изображения"""
     image = image / 255.0  # Нормализация как при обучении
-    image = np.expand_dims(image, axis=0)  # Исправлено: expand_dims
+    image = np.expand_dims(image, axis=0)  
     predictions = model.predict(image, verbose=0)
-    return class_labels[np.argmax(predictions)]  # Исправлено: индексация
+    return class_labels[np.argmax(predictions)]  
 
-# Получение списка изображений (исправлено расширение .png)
+# Получение списка изображений
 image_files = [
     os.path.join(image_folder, f) 
     for f in os.listdir(image_folder) 
